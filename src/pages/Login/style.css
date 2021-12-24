@@ -1,0 +1,10 @@
+.login {
+    background: #60495A;
+    min-height: 100vh;
+    color: #BFC3BA;
+}
+
+.login button {
+    background: #2F2235;
+    color: #BFC3BA
+}

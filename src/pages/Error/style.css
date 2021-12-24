@@ -1,0 +1,8 @@
+.errorpage {
+    background: #60495A;
+    min-height: 100vh;
+}
+
+.errorpage h1 {
+    color: #BFC3BA
+}
