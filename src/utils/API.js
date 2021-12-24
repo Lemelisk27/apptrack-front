@@ -12,6 +12,11 @@ const API = {
         return axios.post(`${URL_PREFIX}/api/users/change`, data, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    getApps:(id,tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/apps/user/${id}`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

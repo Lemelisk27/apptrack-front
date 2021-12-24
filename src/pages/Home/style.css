@@ -3,3 +3,8 @@
     min-height: calc(100vh - 100px);
     color: #BFC3BA
 }
+
+.app-table {
+    height: 50vh;
+    background: #eeeeeeff;
+}
