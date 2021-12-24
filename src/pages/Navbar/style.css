@@ -2,8 +2,23 @@
     background: #2F2235;
     height: 100px;
     color: #BFC3BA;
+    font-family: "Segoe Print"
 }
 
 .navbar button {
     background: #BFC3BA;
+}
+
+.navbar a {
+    color: #BFC3BA;
+    font-size: larger;
+}
+
+.navbar a:hover {
+    color: white
+}
+
+.passwordmodal {
+    background: #60495A;
+    color: #BFC3BA;
 }

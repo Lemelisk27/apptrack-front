@@ -47,7 +47,9 @@ function Login () {
             localStorage.setItem("token", res.data.token)
             const userData = {
                 id: res.data.user.id,
-                username: res.data.user.username
+                username: res.data.user.username,
+                firstName: res.data.user.first_name,
+                lastName: res.data.user.last_name
             }
             Auth.saveUser(userData)
             setUser({

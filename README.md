@@ -8,8 +8,19 @@ This is a site to track applications to new jobs.
 - [License](#license)
 ## Installation
 Required Dependencies:
+- @testing-library/jest-dom
+- @testing-library/react
+- @testing-library/user-event
+- axios
+- bootstrap
+- jwt-decode
+- react
+- react-bootstrap
+- react-dom
+- react-router-dom
+- react-scripts
 ## Usage
-Link:  
+Link: [https://zwsapptrack.herokuapp.com](https://zwsapptrack.herokuapp.com)  
 ## Credits
 Zach Smith - [GitHub Profile](https://github.com/Lemelisk27)  
 ## License
