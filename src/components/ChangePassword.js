@@ -70,21 +70,21 @@ function ChangePassword (props) {
 
     return (
         <form className="d-flex flex-column col-12" onSubmit={handleFormSubmit}>
-            <div className="d-flex flex-column">
+            <div className="d-flex flex-column col-9 mx-auto">
                 <label>Current Password</label>
                 <input type="password" name="password" value={userData.password} onChange={handleInputChange}></input>
                 {passwordError && (
                     <p className="text-danger mb-0">A Password is Required</p>
                 )}
             </div>
-            <div className="d-flex flex-column">
+            <div className="d-flex flex-column col-9 mx-auto">
                 <label>New Password</label>
                 <input type="password" name="newpassword" value={userData.newpassword} onChange={handleInputChange}></input>
                 {newError && (
                     <p className="text-danger mb-0">A new Password is Required</p>
                 )}
             </div>
-            <div className="d-flex flex-column">
+            <div className="d-flex flex-column col-9 mx-auto">
                 <label>Confirm New Password</label>
                 <input type="password" name="confPass" value={confPass} onChange={handleInputChange}></input>
                 {confError && (

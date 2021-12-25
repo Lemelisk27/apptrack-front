@@ -17,6 +17,11 @@ const API = {
         return axios.get(`${URL_PREFIX}/api/apps/user/${id}`, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    addApp:(data,tkn)=>{
+        return axios.post(`${URL_PREFIX}/api/apps`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

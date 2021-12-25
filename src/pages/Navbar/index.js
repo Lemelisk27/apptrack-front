@@ -32,7 +32,7 @@ function Navbar () {
                 <button className="rounded" onClick={logout}>Log Out</button>
             </div>
             <Modal
-                size="lg"
+                size="md"
                 show={passwordModal}
                 onHide={() => {setPasswordModal(false)}}
                 aria-labelledby="add-modal"
