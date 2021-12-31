@@ -1,0 +1,10 @@
+.closed {
+    background: #60495A;
+    min-height: calc(100vh - 100px);
+    color: #BFC3BA
+}
+
+.closed-table {
+    height: 50vh;
+    background: #eeeeeeff;
+}

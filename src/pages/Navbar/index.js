@@ -28,6 +28,7 @@ function Navbar () {
             <h1 className="mx-4">{user.firstName} {user.lastName}</h1>
             <div className="d-flex flex-row col-6 align-items-center mx-4 justify-content-around">
                 <a href="/" className="mx-1">Open Applications</a>
+                <a href="/closed" className="mx-1">Closed Applications</a>
                 <button className="rounded" onClick={changePassword}>Change Password</button>
                 <button className="rounded" onClick={logout}>Log Out</button>
             </div>

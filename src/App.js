@@ -5,6 +5,7 @@ import ErrorPage from "./pages/Error"
 import AuthRoute from "./utils/AuthRoute"
 import HomePage from "./pages/Home"
 import Navbar from "./pages/Navbar"
+import ClosedApps from "./pages/Closed"
 
 function App() {
   return (
@@ -16,6 +17,14 @@ function App() {
               <>
                 <Navbar />
                 <HomePage />
+              </>
+            }/>
+          </Route>
+          <Route exact path="/closed" element={<AuthRoute/>}>
+            <Route exact path="/closed" element={
+              <>
+                <Navbar />
+                <ClosedApps />
               </>
             }/>
           </Route>
