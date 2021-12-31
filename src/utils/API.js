@@ -22,6 +22,21 @@ const API = {
         return axios.post(`${URL_PREFIX}/api/apps`, data, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    getOneApp:(id,tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/apps/${id}`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    closeApp:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/apps/close`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    updateApp:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/apps`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 
