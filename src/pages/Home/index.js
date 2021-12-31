@@ -9,8 +9,12 @@ import AddApplication from "../../components/AddApplication"
 function HomePage () {
     const token = Auth.getToken()
     const user = Auth.getUser()
+    const [rawData, setRawData] = useState([])
     const [appData, setAppData] = useState([])
     const [addAppModal, setAddAppModal] = useState(false)
+    const [search, setSearch] = useState("")
+    const [startDate, setStartDate] = useState("")
+    const [endDate, setEndDate] = useState("")
 
     useEffect(()=>{
         loadPage()
@@ -22,11 +26,43 @@ function HomePage () {
         // eslint-disable-next-line
     },[addAppModal])
 
+    useEffect(()=>{
+        const regex = new RegExp(`${search}.*`, "i")
+        if (search === "" || search === null) {
+            clearSearch()
+        }
+        else {
+            setAppData(appData.filter(name => regex.exec(name.employer)))
+        }
+        // eslint-disable-next-line
+    },[search])
+
+    useEffect(()=>{
+        if (endDate === "" || endDate === null) {
+            clearSearch()
+        }
+        else {
+            setAppData(appData.filter(date => date.applied <= endDate))
+        }
+        // eslint-disable-next-line
+    },[endDate])
+
+    useEffect(()=>{
+        if (startDate === "" || startDate === null) {
+            clearSearch()
+        }
+        else {
+            setAppData(appData.filter(date => date.applied >= startDate))
+        }
+        // eslint-disable-next-line
+    },[startDate])
+
     const loadPage = () => {
         API.getApps(user.id,token)
         .then(res=>{
             const tempArray = res.data
             setAppData(tempArray.filter(item => item.open === true))
+            setRawData(tempArray.filter(item => item.open === true))
         })
         .catch(err=>{
             console.log(err)
@@ -38,6 +74,30 @@ function HomePage () {
         setAddAppModal(true)
     }
 
+    const handleInputChange = (e) => {
+        if (e.target.name === "search") {
+            setSearch(e.target.value)
+        }
+        if (e.target.name === "startDate") {
+            setStartDate(e.target.value)
+        }
+        if (e.target.name === "endDate") {
+            setEndDate(e.target.value)
+        }
+    }
+
+    const clearSearch = (e) => {
+        setAppData(rawData)
+        setSearch("")
+        setStartDate("")
+        setEndDate("")
+    }
+
+    const clearButton = (e) => {
+        e.preventDefault()
+        clearSearch()
+    }
+
     return (
         <div className="home d-flex col-12">
             <div className="d-flex flex-column col-11 mx-auto mt-3">
@@ -45,10 +105,21 @@ function HomePage () {
                     <h1>Open Applications</h1>
                     <button className="bg-secondary text-light col-2 rounded" onClick={addApp}>Add Application</button>
                 </div>
-                <form className="d-flex justify-content-start mt-5 col-11 mx-auto">
+                <form className="d-flex justify-content-start mt-5 col-11 mx-auto justify-content-between">
                     <div className="d-flex flex-column col-6">
                         <label>Employer</label>
-                        <input type="text" name="employer" placeholder="Type Here to Search..."></input>
+                        <input type="text" name="search" placeholder="Type Here to Search..." value={search} onChange={handleInputChange}></input>
+                    </div>
+                    <div className="d-flex flex-row col-6 justify-content-around">
+                        <div className="d-flex flex-column">
+                            <label>Start Date</label>
+                            <input type="date" name="startDate" value={startDate} onChange={handleInputChange}></input>
+                        </div>
+                        <div className="d-flex flex-column">
+                            <label>End Date</label>
+                            <input type="date" name="endDate" value={endDate} onChange={handleInputChange}></input>
+                        </div>
+                        <button className="bg-secondary text-light col-2 rounded align-self-end" onClick={clearButton}>Clear Search</button>
                     </div>
                 </form>
                 <div className="app-table col-11 mx-auto mt-5 overflow-auto">
