@@ -1,0 +1,15 @@
+.closed-details {
+    background: #60495A;
+    min-height: calc(100vh - 100px);
+    color: #BFC3BA
+}
+
+.closed-card {
+    height: 55vh;
+    background: #eeeeeeff;
+    color: black;
+}
+
+.closed-notes {
+    height: 33vh
+}

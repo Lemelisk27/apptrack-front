@@ -37,6 +37,17 @@ const API = {
         return axios.put(`${URL_PREFIX}/api/apps`, data, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    openApp:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/apps/open`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    getUsernames:()=>{
+        return axios.get(`${URL_PREFIX}/api/users/usernames`)
+    },
+    newUser:(data)=>{
+        return axios.post(`${URL_PREFIX}/api/users`, data)
     }
 }
 

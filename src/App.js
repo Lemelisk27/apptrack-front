@@ -7,6 +7,7 @@ import HomePage from "./pages/Home"
 import Navbar from "./pages/Navbar"
 import ClosedApps from "./pages/Closed"
 import OpenDetails from "./pages/OpenDetails"
+import ClosedDetails from "./pages/ClosedDetails"
 
 function App() {
   return (
@@ -34,6 +35,14 @@ function App() {
               <>
                 <Navbar />
                 <ClosedApps />
+              </>
+            }/>
+          </Route>
+          <Route exact path="/closed/:id" element={<AuthRoute/>}>
+            <Route exact path="/closed/:id" element={
+              <>
+                <Navbar />
+                <ClosedDetails />
               </>
             }/>
           </Route>

@@ -140,7 +140,7 @@ function OpenDetails () {
     return (
         <div className="open-details d-flex col-12">
             <div className="d-flex flex-column col-11 mx-auto mt-3">
-                <div className="d-flex flex-row col-11 mx-auto mt-4 justify-content-between border-bottom border-dart pb-4">
+                <div className="d-flex flex-row col-11 mx-auto mt-4 justify-content-between border-bottom border-dark pb-4">
                     <h1>{appData.employer} - {appData.title} - {appData.applied_date}</h1>
                 </div>
                 <form className="d-flex flex-column col-11 mx-auto mt-5">

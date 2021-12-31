@@ -1,12 +1,15 @@
 import React, {useState} from "react";
+import {Modal} from "react-bootstrap"
 import "./style.css"
 import API from "../../utils/API"
 import Auth from "../../utils/Auth"
+import SignUp from "../../components/SignUp"
 
 function Login () {
     const [userError, setUserError] = useState(false)
     const [passwordError, setPasswordError] = useState(false)
     const [loginError, setLoginError] = useState(false)
+    const [showModal, setShowModal] = useState(false)
     const [user, setUser] = useState({
         username: "",
         password: ""
@@ -71,8 +74,14 @@ function Login () {
         setLoginError(false)
     }
 
+    const signUpBtn = (e) => {
+        e.preventDefault()
+        setShowModal(true)
+    }
+
     return (
         <div className="login">
+            <h1 className="text-center pt-5">Job Application Tracker</h1>
             <form className="d-flex flex-column col-10 mx-auto align-items-center pt-5" onSubmit={handleFormSubmit}>
                 <h1>Please Log In</h1>
                 <div className="d-flex flex-column col-4">
@@ -93,7 +102,21 @@ function Login () {
                 {loginError && (
                     <p className="bg-white text-danger text-center rounded col-3 mx-auto mt-3">Incorrect Username or Password</p>
                 )}
+                <button className="col-1 mt-3 rounded" onClick={signUpBtn}>Sign Up</button>
             </form>
+            <Modal
+                size="lg"
+                show={showModal}
+                onHide={() => {setShowModal(false)}}
+                aria-labelledby="add-modal"
+                centered>
+                <Modal.Header closeButton className="sign-up">
+                    <h3>Sign Up</h3>
+                </Modal.Header>
+                <Modal.Body className="modal-body">
+                    <SignUp setShowModal={setShowModal}/>
+                </Modal.Body>
+            </Modal>
         </div>
     )
 }
