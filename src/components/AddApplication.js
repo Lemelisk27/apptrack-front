@@ -5,7 +5,7 @@ import API from "../utils/API";
 function AddApplication (props) {
     const token = Auth.getToken()
     const today = new Date()
-    const month = today.getMonth() + 1
+    const month = (today.getMonth() + 1).toString().padStart(2, "0")
     const day = today.getDate()
     const year = today.getFullYear()
     const dtToday = year + "-" + month + "-" + day
