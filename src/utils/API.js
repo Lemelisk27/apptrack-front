@@ -48,6 +48,11 @@ const API = {
     },
     newUser:(data)=>{
         return axios.post(`${URL_PREFIX}/api/users`, data)
+    },
+    deleteApp:(id,tkn)=>{
+        return axios.delete(`${URL_PREFIX}/api/apps/${id}`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

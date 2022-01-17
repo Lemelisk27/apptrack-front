@@ -13,3 +13,8 @@
 .closed-notes {
     height: 33vh
 }
+
+.deletemodal {
+    background: #60495A;
+    color: #BFC3BA
+}

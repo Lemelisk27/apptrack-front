@@ -1,12 +1,15 @@
 import React, {useState, useEffect} from "react";
+import {Modal} from "react-bootstrap"
 import "./style.css"
 import {useParams} from "react-router-dom"
 import Auth from "../../utils/Auth";
 import API from "../../utils/API";
+import DeleteApplication from "../../components/DeleteApplication"
 
 function ClosedDetails () {
     const {id} = useParams()
     const token = Auth.getToken()
+    const [showmodal, setShowModal] = useState(false)
     const [appData, setAppData] = useState({
         UserId: 0,
         applied: "",
@@ -72,6 +75,11 @@ function ClosedDetails () {
         })
     }
 
+    const deleteBtn = (e) => {
+        e.preventDefault()
+        setShowModal(true)
+    }
+
     return (
         <div className="closed-details d-flex flex-column col-12">
             <div className="d-flex flex-column col-11 mx-auto mt-3">
@@ -113,8 +121,22 @@ function ClosedDetails () {
                 <div className="d-flex flex-row col-6 mx-auto mt-5 justify-content-around">
                     <button className="bg-secondary text-light col-3 rounded" onClick={cancelBtn}>Cancel</button>
                     <button className="bg-secondary text-light col-3 rounded" onClick={openApplication}>Re-Open Application</button>
+                    <button className="bg-danger text-light col-3 rounded" onClick={deleteBtn}>Delete Application</button>
                 </div>
             </div>
+            <Modal
+                size="lg"
+                show={showmodal}
+                onHide={() => {setShowModal(false)}}
+                aria-labelledby="add-modal"
+                centered>
+                <Modal.Header closeButton className="deletemodal">
+                    <h3>Delete Application</h3>
+                </Modal.Header>
+                <Modal.Body>
+                    <DeleteApplication setShowModal={setShowModal} id={id}/>
+                </Modal.Body>
+            </Modal>
         </div>
     )
 }
